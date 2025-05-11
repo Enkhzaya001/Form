@@ -18,12 +18,18 @@ export const Step3_Card = ({
 }) => {
   const validateFormTree = () => {
     const newErrors = {};
+    const imageExtension = form.AddImage.split(".").pop();
+    const validExtensions = ["jpeg", "png", "jpg"];
 
     if (!form.Date) {
       newErrors.Date = "Date is required";
     }
     if (!form.AddImage) {
       newErrors.AddImage = "image is required";
+    }
+    if (form.AddImage && !validExtensions.includes(imageExtension)) {
+      alert("Зөвхөн jpeg, jpg, png зураг оруулна уу.");
+      return;
     }
     setErrors((prev) => ({ ...prev, ...newErrors }));
 
@@ -51,7 +57,9 @@ export const Step3_Card = ({
               type="date"
               value={form.Date}
             />
-            {errors.Date && <p className="text-red-500">{errors.Date}</p>}
+            {errors.Date && (
+              <p className="text-red-500 relative left-[20px]">{errors.Date}</p>
+            )}
             <p className="ml-[20px]"></p>
             <Step3Input
               clearImage={clearImage}
@@ -60,7 +68,9 @@ export const Step3_Card = ({
               value={form.AddImage}
             />
             {errors.AddImage && (
-              <p className="text-red-500">{errors.AddImage}</p>
+              <p className="text-red-500 relative top-[125px] left-[30px]">
+                {errors.AddImage}
+              </p>
             )}
           </div>
           <div className="flex gap-2">

@@ -35,7 +35,7 @@ const Home = () => {
     AddImage: "",
   });
 
-  // console.log(form);
+  console.log(form);
   const clearImage = () => {
     setForm((prev) => {
       return { ...prev, AddImage: "" };

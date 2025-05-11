@@ -1,5 +1,6 @@
 import { ImageUp } from "lucide-react";
 import { useState } from "react";
+import Image from "next/image";
 
 export const Step3Input = ({ valueChanger, name, clearImage }) => {
   const [previewUrl, setPreviewUrl] = useState(null);
@@ -15,7 +16,6 @@ export const Step3Input = ({ valueChanger, name, clearImage }) => {
     setPreviewUrl(null);
     clearImage();
   };
-
   const drophandle = (event) => {
     console.log(event);
   };
@@ -56,11 +56,11 @@ export const Step3Input = ({ valueChanger, name, clearImage }) => {
             className="w-[350px] h-[150px] rounded-md shadow"
           />
           <button
-            className="absolute text-red-500  right-[60px] bold cursor-pointer "
+            className="absolute text-red-500  right-[50px] bold cursor-pointer "
             onClick={clearHandle}
             onChange={handleChange}
           >
-            X
+            <Image src={"/deletebtn.png"} alt="Delete" width={35} height={35} />
           </button>
         </div>
       )}
